@@ -1,38 +1,59 @@
+# Required variables
 variable "ami_id" {
-  description = "AMI ID the target group will launch"
+  description = "(Required) AMI ID the target group will launch"
   type        = "string"
 }
 
 variable "availability_zones" {
-  description = "Availability zones"
+  description = "(Required) Availability zones"
   type        = "list"
 }
 
 variable "desired_count" {
-  description = "Number of instance you want to launch initially"
+  description = "(Required) Number of instance you want to launch initially"
   type        = number
 }
 
 variable "vpc_id" {
-  description = "The VPC Id"
+  description = "(Required) The VPC Id"
   type        = "string"
 }
 
-variable "port" {
-  description = "Target port of the target group"
-  type        = number
-}
-
 variable "launch_template" {
-  description = "Launch Temaplte id"
+  description = "(Required) Launch Temaplte id"
   type        = "string"
 }
 
 variable "launch_template_version" {
-  description = "The version of launch template"
+  description = "(Required) The version of launch template"
   type        = "string"
 }
 
+
+# Optional variables
+variable "termination_policies" {
+  description = "(Optional) termination policies. default OldestLaunchTemplate, OldestLaunchConfiguration, OldestInstance, ClosestToNextInstanceHour"
+  type        = "list"
+  default     = [
+    "OldestLaunchTemplate",
+    "OldestLaunchConfiguration",
+    "OldestInstance",
+    "ClosestToNextInstanceHour"
+  ]
+}
+
+variable "protocol" {
+  description = "(Optional) Protocol that used for communicationg target instance. default HTTP"
+  type        = "string"
+  default     = "HTTP"
+}
+
+
+variable "port" {
+  description = "(Optional) Target port of the target group. default to 80"
+  type        = number
+  default     = 80
+}
 
 variable "namespace" {
   description = "namespace of the resources"

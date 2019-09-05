@@ -1,7 +1,7 @@
 resource "aws_lb_target_group" "target_group" {
   name_prefix   = "${var.namespace}-"
   port          = "${var.port}"
-  protocol      = "TCP"
+  protocol      = "${var.protocol}"
   vpc_id        = "${var.vpc_id}"
 
 
@@ -31,12 +31,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
       "${aws_lb_target_group.target_group.arn}"
   ]
 
-  termination_policies  = [
-      "OldestLaunchTemplate",
-      "OldestLaunchConfiguration",
-      "OldestInstance",
-      "ClosestToNextInstanceHour"
-  ]
+  termination_policies  = "${var.termination_policies}"
 
   tags  = "${var.tags}"
 
