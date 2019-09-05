@@ -10,7 +10,7 @@ variable "availability_zones" {
 
 variable "desired_count" {
   description = "Number of instance you want to launch initially"
-  type        = "number"
+  type        = number
 }
 
 variable "vpc_id" {
@@ -20,7 +20,7 @@ variable "vpc_id" {
 
 variable "port" {
   description = "Target port of the target group"
-  type        = "string"
+  type        = number
 }
 
 
