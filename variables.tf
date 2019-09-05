@@ -41,9 +41,13 @@ variable "namespace" {
 }
 
 variable "tags" {
-  description = "tags for resource"
-  type        = "map"
-  default     = {
-    CreatedBy = "Terraform"
-  }
+  description = "A list of tag blocks (maps). Tags documented below. details https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html"
+  type        = "list"
+  default     = [
+    {
+      key                 = "CreatedBy"
+      value               = "Terraform"
+      propagate_at_launch = true
+    }
+  ]
 }
