@@ -18,6 +18,12 @@ resource "aws_autoscaling_group" "autoscaling_group" {
   min_size              = "${var.desired_count}"
 
   # Health Check configurations
+
+  # Launch configurations
+  launch_template {
+    id      = "${var.launch_template}"
+    version = "${var.launch_template_version}"
+  }
   
   
   # Target configurations

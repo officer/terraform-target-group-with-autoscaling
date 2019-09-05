@@ -23,6 +23,16 @@ variable "port" {
   type        = number
 }
 
+variable "launch_template" {
+  description = "Launch Temaplte id"
+  type        = "string"
+}
+
+variable "launch_template_version" {
+  description = "The version of launch template"
+  type        = "string"
+}
+
 
 variable "namespace" {
   description = "namespace of the resources"
