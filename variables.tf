@@ -1,8 +1,4 @@
 # Required variables
-variable "ami_id" {
-  description = "(Required) AMI ID the target group will launch"
-  type        = "string"
-}
 
 variable "availability_zones" {
   description = "(Required) Availability zones"
